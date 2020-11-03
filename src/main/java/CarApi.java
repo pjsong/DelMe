@@ -7,21 +7,28 @@ public interface CarApi {
     enum Orientation{
         NORTH, SOUTH, EAST, WEST;
         public boolean isYPosPlus(){
-            return this.equals(NORTH);
+            return equals(NORTH);
         }
         public boolean isYPosMinus(){
-            return this.equals(SOUTH);
+            return equals(SOUTH);
         }
         public boolean isXPosPlus(){
-            return this.equals(EAST);
+            return equals(EAST);
         }
         public boolean isXPosMinus(){
-            return this.equals(WEST);
+            return equals(WEST);
+        }
+        public Orientation turnClockWise(){
+            if(equals(NORTH))return EAST;
+            else if(equals(EAST))return SOUTH;
+            else if(equals(SOUTH))return WEST;
+            else if(equals(WEST))return NORTH;
+            return this;
         }
     }
 
 
     void move(Integer steps, Orientation orientation) throws OutOfParkBoundException;
-
+    Orientation turnClockWise(Orientation orientation);
     CarEnv.PositionOfCar getPositonOfCar();
 }

@@ -18,6 +18,12 @@ public class CarDriverLess implements CarApi{
         if(carPos.boundaryBroken(dimensionOfPark))throw new CarApi.OutOfParkBoundException();
     }
 
+    @Override
+    public Orientation turnClockWise(Orientation orientation) {
+        orientation = orientation.turnClockWise();
+        return orientation;
+    }
+
     public CarEnv.PositionOfCar getPositonOfCar() {
         System.out.println(carPos);
         return carPos;
